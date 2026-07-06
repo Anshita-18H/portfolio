@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anshita [Last Name] — Software Engineer</title>
+<meta name="description" content="Portfolio of Anshita [Last Name] — aspiring Software Development Engineer">
+
+<!-- 
+  ============================================================
+  HOW TO CUSTOMIZE THIS FILE (read me first!)
+  ============================================================
+  1. Search for "EDIT:" comments — they mark every spot that
+     needs your real info (name, email, links, CGPA, etc.)
+  2. Replace "Your Name" everywhere with your actual name.
+  3. Update the <a href="..."> links for GitHub, LinkedIn, 
+     email, and resume PDF.
+  4. In the CHANGELOG section, edit the skill descriptions.
+  5. In the PROJECTS section, once you build a project, 
+     replace the empty-state card with a real project card 
+     (a template for one is commented out right below it).
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --paper-raised:#FFFFFF;
+    --ink:#191B1F;
+    --ink-soft:#5B5F68;
+    --line:#E4E0D6;
+    --blue:#3454D1;
+    --blue-dim:#3454D114;
+    --olive:#5A7A3D;
+    --olive-dim:#5A7A3D14;
+    --rust:#C1622E;
+    --rust-dim:#C1622E14;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Work Sans', sans-serif;
+    --radius: 10px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  ::selection{background:var(--blue); color:#fff;}
+
+  :focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:880px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,242,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:880px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono); font-weight:600; font-size:15px;
+    letter-spacing:0.02em;
+  }
+  .logo .dot{color:var(--rust);}
+  nav.links{display:flex; gap:22px; font-family:var(--mono); font-size:13px;}
+  nav.links a{color:var(--ink-soft); transition:color .15s ease;}
+  nav.links a:hover{color:var(--ink);}
+  @media (max-width:600px){
+    nav.links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 64px;
+  }
+  .terminal{
+    background:var(--ink);
+    color:#E9E7E1;
+    border-radius:var(--radius);
+    font-family:var(--mono);
+    font-size:14px;
+    overflow:hidden;
+    box-shadow:0 18px 40px -20px rgba(25,27,31,0.35);
+  }
+  .terminal-bar{
+    display:flex; align-items:center; gap:7px;
+    padding:11px 14px;
+    background:#232529;
+    border-bottom:1px solid #2E3036;
+  }
+  .terminal-bar span{
+    width:10px; height:10px; border-radius:50%;
+    display:inline-block;
+    background:#4a4d54;
+  }
+  .terminal-bar .path{
+    margin-left:10px; color:#8A8D96; font-size:12px;
+  }
+  .terminal-body{padding:22px 20px 26px; min-height:140px;}
+  .terminal-body .prompt{color:var(--olive);}
+  .terminal-body .cmd{color:#E9E7E1;}
+  .terminal-line{margin-bottom:6px;}
+  .terminal-out{color:#B7B4AC;}
+  #typed-line::after{
+    content:'▌';
+    margin-left:2px;
+    animation:blink 1s step-end infinite;
+    color:var(--blue);
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero h1{
+    font-family:var(--mono);
+    font-size:clamp(28px,5vw,42px);
+    font-weight:600;
+    margin-top:34px;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{color:var(--blue);}
+  .hero p.tagline{
+    margin-top:14px;
+    max-width:56ch;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+  .hero .cta-row{
+    margin-top:28px;
+    display:flex; gap:12px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    padding:11px 18px;
+    border-radius:8px;
+    border:1px solid var(--ink);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{transform:translateY(-2px); background:var(--blue); border-color:var(--blue);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-ghost:hover{transform:translateY(-2px); border-color:var(--ink);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:12px;
+    margin-bottom:34px;
+  }
+  .section-head .tag{
+    font-family:var(--mono); font-size:12px; color:var(--blue);
+    background:var(--blue-dim);
+    padding:4px 9px; border-radius:6px; white-space:nowrap;
+  }
+  .section-head h2{
+    font-family:var(--mono);
+    font-size:22px; font-weight:600;
+  }
+  hr.rule{border:none; border-top:1px solid var(--line);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:36px;
+  }
+  @media (max-width:680px){ .about-grid{grid-template-columns:1fr;} }
+  .about-text p{margin-bottom:14px; color:var(--ink-soft);}
+  .about-text strong{color:var(--ink); font-weight:600;}
+  .stat-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    margin-bottom:12px;
+  }
+  .stat-card .num{
+    font-family:var(--mono); font-size:24px; font-weight:700; color:var(--rust);
+  }
+  .stat-card .label{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+
+  /* ---------- CHANGELOG (SKILLS) ---------- */
+  .changelog{border-left:2px solid var(--line); margin-left:6px;}
+  .release{position:relative; padding:0 0 30px 28px;}
+  .release:last-child{padding-bottom:0;}
+  .release::before{
+    content:'';
+    position:absolute; left:-7px; top:4px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--blue);
+  }
+  .release.done::before{background:var(--blue);}
+  .release .version{
+    font-family:var(--mono); font-size:13px; font-weight:600;
+    color:var(--blue);
+    display:inline-block; margin-bottom:6px;
+  }
+  .release .version.shipped{color:var(--olive);}
+  .release h3{font-size:16px; font-weight:600; margin-bottom:6px;}
+  .release p{color:var(--ink-soft); font-size:14.5px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .tag-pill{
+    font-family:var(--mono); font-size:12px;
+    background:var(--olive-dim); color:var(--olive);
+    padding:4px 10px; border-radius:20px;
+  }
+  .tag-pill.wip{background:var(--rust-dim); color:var(--rust);}
+
+  /* ---------- PROJECTS EMPTY STATE ---------- */
+  .empty-card{
+    border:1.5px dashed var(--line);
+    border-radius:var(--radius);
+    padding:40px 30px;
+    text-align:center;
+    background:var(--paper-raised);
+  }
+  .empty-card .icon{
+    font-family:var(--mono); font-size:13px; color:var(--ink-soft);
+    background:var(--paper); border:1px solid var(--line);
+    display:inline-block; padding:4px 10px; border-radius:6px;
+    margin-bottom:16px;
+  }
+  .empty-card h3{font-size:17px; margin-bottom:8px;}
+  .empty-card p{color:var(--ink-soft); font-size:14.5px; max-width:46ch; margin:0 auto 18px;}
+
+  /* Template for a real project card once you have one — 
+     duplicate this block in the HTML and delete .empty-card
+  .project-card{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; background:var(--paper-raised);
+  }
+  */
+
+  /* ---------- EXPERIENCE (Hackathon / OSS) ---------- */
+  .exp-list{display:flex; flex-direction:column; gap:18px;}
+  .exp-item{
+    display:flex; gap:16px;
+    padding:18px 20px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--paper-raised);
+  }
+  .exp-item .exp-icon{
+    font-family:var(--mono); font-size:11px; font-weight:600;
+    color:#fff; background:var(--blue);
+    border-radius:6px; width:34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .exp-item.oss .exp-icon{background:var(--olive);}
+  .exp-item h3{font-size:15.5px; margin-bottom:4px;}
+  .exp-item p{color:var(--ink-soft); font-size:14px;}
+  .exp-item .meta{
+    font-family:var(--mono); font-size:12px; color:var(--ink-soft);
+    margin-top:6px; display:block;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:var(--ink); color:var(--paper);
+    border-radius:16px;
+    padding:44px 36px;
+    text-align:center;
+  }
+  .contact-card h2{
+    font-family:var(--mono); font-size:24px; margin-bottom:12px;
+  }
+  .contact-card p{color:#C7C4BC; max-width:44ch; margin:0 auto 24px;}
+  .contact-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+  .contact-links a{
+    font-family:var(--mono); font-size:13px;
+    padding:10px 16px; border-radius:8px;
+    border:1px solid #3A3C42;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .contact-links a:hover{background:#26282D; border-color:#4a4d54;}
+
+  footer{
+    padding:30px 0 44px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #typed-line::after{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">anshita<span class="dot">.</span>dev</div>
+    <nav class="links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span></span><span></span><span></span>
+        <span class="path">~/portfolio — zsh</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">whoami</span></div>
+        <div class="terminal-out" id="typed-line"></div>
+      </div>
+    </div>
+
+    <!-- EDIT: fill in your last name -->
+    <h1>Hi, I'm <span class="accent">Anshita [Last Name]</span>.</h1>
+    <p class="tagline">
+      Second-year Computer Science student building toward a career as a
+      Software Development Engineer. Comfortable across the stack — from
+      writing clean HTML/CSS to querying databases with SQL — and currently
+      leveling up in JavaScript and the MERN stack.
+    </p>
+    <div class="cta-row">
+      <!-- EDIT: link to your resume PDF (upload it alongside this file) -->
+      <a class="btn btn-solid" href="./resume.pdf" target="_blank" rel="noopener">↓ Resume</a>
+      <!-- EDIT: your GitHub -->
+      <a class="btn btn-ghost" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <!-- EDIT: your LinkedIn -->
+      <a class="btn btn-ghost" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="section-head">
+      <span class="tag">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <!-- EDIT: 2-3 sentences about yourself, your college, and what you're looking for -->
+        <p>
+          I'm a second-year <strong>B.Tech Computer Science</strong> student
+          with a strong foundation in web fundamentals and databases. I like
+          understanding how things work end to end — from styling a page in
+          CSS to writing the SQL query that powers it — and I'm now extending
+          that into full-stack development with JavaScript and the MERN stack.
+        </p>
+        <p>
+          I'm actively contributing to open source, competing in hackathons,
+          and looking for an <strong>SDE role</strong> where I can keep
+          learning fast and ship things that matter.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">8.99 / 10</div>
+          <div class="label">CGPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">1</div>
+          <div class="label">Open source PR merged</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">1+</div>
+          <div class="label">Hackathon participated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ================= SKILLS / CHANGELOG ================= -->
+  <section id="skills">
+    <div class="section-head">
+      <span class="tag">02</span>
+      <h2>Skill changelog</h2>
+    </div>
+
+    <div class="changelog">
+      <div class="release done">
+        <span class="version shipped">v0.1.0 — shipped</span>
+        <h3>Web fundamentals</h3>
+        <p>Core HTML and CSS — semantic markup, layout, and responsive design. This site is built with them.</p>
+        <div class="tags">
+          <span class="tag-pill">HTML</span>
+          <span class="tag-pill">CSS</span>
+        </div>
+      </div>
+
+      <div class="release done">
+        <span class="version shipped">v0.4.0 — shipped</span>
+        <h3>Data &amp; databases</h3>
+        <p>Comfortable writing SQL queries, designing schemas, and working with relational databases end to end.</p>
+        <div class="tags">
+          <span class="tag-pill">SQL</span>
+          <span class="tag-pill">Databases</span>
+        </div>
+      </div>
+
+      <div class="release done">
+        <span class="version shipped">v0.6.0 — shipped</span>
+        <h3>Python</h3>
+        <p>Solid working knowledge of Python for problem solving and scripting.</p>
+        <div class="tags">
+          <span class="tag-pill">Python</span>
+        </div>
+      </div>
+
+      <div class="release">
+        <span class="version">v0.8.0 — in progress</span>
+        <h3>JavaScript &amp; the MERN stack</h3>
+        <p>Currently building depth in JavaScript, and learning MongoDB, Express, React, and Node to ship full-stack apps.</p>
+        <div class="tags">
+          <span class="tag-pill wip">JavaScript</span>
+          <span class="tag-pill wip">MongoDB</span>
+          <span class="tag-pill wip">Express</span>
+          <span class="tag-pill wip">React</span>
+          <span class="tag-pill wip">Node.js</span>
+        </div>
+      </div>
+
+      <div class="release">
+        <span class="version">v1.0.0 — planned</span>
+        <h3>First full-stack project, shipped end to end</h3>
+        <p>The goal this release is aimed at — see Projects below.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="section-head">
+      <span class="tag">03</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="empty-card">
+      <span class="icon">git log --oneline</span>
+      <h3>Nothing shipped here yet — on purpose.</h3>
+      <p>
+        I'm currently building my first full-stack project with the MERN
+        stack. Rather than pad this page, I'm leaving it honest until
+        there's something real to show. Check back soon, or see the
+        changelog above for what's in progress right now.
+      </p>
+      <a class="btn btn-ghost" href="https://github.com/yourusername" target="_blank" rel="noopener">Follow progress on GitHub →</a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="section-head">
+      <span class="tag">04</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="exp-list">
+      <div class="exp-item oss">
+        <div class="exp-icon">PR</div>
+        <div>
+          <h3>Open source contributor</h3>
+          <!-- EDIT: name the repo/org and what your PR did -->
+          <p>Contributed and merged a pull request to an open-source project, fixing a bug / adding a small feature to the codebase.</p>
+          <span class="meta"><!-- EDIT: link to your merged PR --><a href="#">→ view merged PR</a></span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-icon">HK</div>
+        <div>
+          <h3>Hackathon participant</h3>
+          <!-- EDIT: name the hackathon and what you built -->
+          <p>Built a working prototype under time pressure as part of a team, covering everything from idea to demo.</p>
+          <span class="meta"><!-- EDIT: hackathon name and date -->Hackathon Name — Month 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="contact-card">
+      <h2>Let's talk</h2>
+      <p>Open to SDE roles and internships. Reach out — I reply quickly.</p>
+      <div class="contact-links">
+        <!-- EDIT: your email -->
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <!-- EDIT: your name -->
+  built by Your Name · view source on <a href="https://github.com/yourusername/portfolio" target="_blank" rel="noopener" style="text-decoration:underline;">GitHub</a>
+</footer>
+
+<script>
+  // Typewriter effect for the terminal "whoami" output
+  const line = "aspiring-sde @ your-name — building in public.";
+  const el = document.getElementById('typed-line');
+  let i = 0;
+  function type(){
+    if(i <= line.length){
+      el.textContent = line.slice(0, i);
+      i++;
+      setTimeout(type, 32);
+    }
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = line;
+  } else {
+    type();
+  }
+</script>
+
+</body>
+</html>
